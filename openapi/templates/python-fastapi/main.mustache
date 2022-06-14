@@ -1,0 +1,42 @@
+# coding: utf-8
+
+{{>partial_header}}
+
+from fastapi import FastAPI
+from starlette_exporter import PrometheusMiddleware, handle_metrics
+
+{{#apiInfo}}
+{{#apis}}
+from {{apiPackage}}.{{classFilename}} import router as {{classname}}Router
+{{/apis}}
+{{/apiInfo}}
+
+import logging
+import {{packageName}}.libs.config_loader as config_loader
+import {{packageName}}.app_functions as app_functions
+
+config = config_loader.Config()
+
+logging.basicConfig(
+    level=logging.getLevelName(config.get(config_loader.LOGGING_LEVEL)),
+    format=config.get(config_loader.LOGGING_FORMAT))
+
+logger = logging.getLogger(__name__)
+
+app = FastAPI(
+    title="{{appName}}",
+    description="{{appDescription}}",
+    version="{{packageVersion}}",
+)
+
+app_functions.app_init(app)
+
+# Connect Prometheus metric
+app.add_middleware(PrometheusMiddleware)
+app.add_route("/metrics", handle_metrics)
+
+{{#apiInfo}}
+{{#apis}}
+app.include_router({{classname}}Router)
+{{/apis}}
+{{/apiInfo}}

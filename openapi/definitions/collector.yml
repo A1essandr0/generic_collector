@@ -1,0 +1,59 @@
+openapi: 3.0.1
+info:
+  title: Events collector
+  version: 1.0.0
+servers:
+  - url: /
+tags:
+  - name: events-collector
+    description: Events collector API
+paths:
+  /:
+    get:
+      tags:
+        - events-collector
+      summary: receive_event
+      operationId: receiveRawEvent
+      parameters:
+        - name: eventId
+          in: query
+          description: eventId
+          required: true
+          schema:
+            type: string
+        - name: created
+          in: query
+          description: Create date in ISO format YYYY-MM-DDTHH:MM:SS+HH:MM
+          required: false
+          schema:
+            type: string
+        - name: source
+          in: query
+          description: source
+          required: true
+          schema:
+            type: string
+        - name: payout
+          in: query
+          description: payout
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Event received
+          content: {}
+        "400":
+          description: Invalid value
+          content: {}
+
+components:
+  schemas:
+    raw_query:
+      $ref: "resources/event.yml"
+
+  securitySchemes:
+    bearerAuth: # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: Simple

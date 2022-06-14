@@ -1,0 +1,11 @@
+type: object
+properties:
+  eventId:
+    type: integer
+  created:
+    type: string
+    format: datetime
+  source:
+    type: string
+  payout:
+    type: string

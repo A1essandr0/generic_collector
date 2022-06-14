@@ -6,12 +6,20 @@ __pycache__/
 # C extensions
 *.so
 
+
+# openapi builders
+*.jar
+
+# builds
+generated/
+
+
 # Distribution / packaging
 .Python
 build/
 develop-eggs/
 dist/
-downloads/
+downloads/  
 eggs/
 .eggs/
 lib/
