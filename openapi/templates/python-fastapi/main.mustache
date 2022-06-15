@@ -13,7 +13,6 @@ from {{apiPackage}}.{{classFilename}} import router as {{classname}}Router
 
 import logging
 import {{packageName}}.libs.config_loader as config_loader
-import {{packageName}}.app_functions as app_functions
 
 config = config_loader.Config()
 
@@ -28,8 +27,6 @@ app = FastAPI(
     description="{{appDescription}}",
     version="{{packageVersion}}",
 )
-
-app_functions.app_init(app)
 
 # Connect Prometheus metric
 app.add_middleware(PrometheusMiddleware)

@@ -50,11 +50,8 @@ if [ ! -d "${DIR}" ]; then
   mkdir -p "${DIR}"
 fi
 
-CRUCIAL_PATH="$DIR/$jar"
-echo $CRUCIAL_PATH
-
-
-if [ ! -f "$CRUCIAL_PATH" ]; then
+JAR_PATH="$DIR/$jar"
+if [ ! -f "$JAR_PATH" ]; then
   repo="central::default::https://repo1.maven.org/maven2/"
   if [[ ${ver} =~ ^.*-SNAPSHOT$ ]]; then
       repo="central::default::https://oss.sonatype.org/content/repositories/snapshots"
@@ -63,7 +60,7 @@ if [ ! -f "$CRUCIAL_PATH" ]; then
     -DremoteRepositories=${repo} \
     -Dartifact=${groupid}:${artifactid}:${ver} \
     -Dtransitive=false \
-    -Ddest="$CRUCIAL_PATH"
+    -Ddest="$JAR_PATH"
 fi
 
 java -ea                          \
@@ -71,4 +68,4 @@ java -ea                          \
   -Xms512M                        \
   -Xmx1024M                       \
   -server                         \
-  -jar "$CRUCIAL_PATH" "$@"
+  -jar "$JAR_PATH" "$@"
