@@ -3,7 +3,7 @@ import logging
 from fastapi import HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials
 
-from collector.libs import config_loader
+from libs import config_loader
 
 logger = logging.getLogger(__name__)
 config = config_loader.Config()

@@ -1,9 +1,9 @@
 from dependency_injector import containers, providers
 
-from collector.libs import config_loader
-from collector.libs.kafka_client import KafkaClient
+from libs import config_loader
+from libs.kafka_client import KafkaClient
 
-from collector.controllers.events_api_impl import EventsApi
+from controllers.events_api_impl import EventsApi
 
 
 class Container(containers.DeclarativeContainer):

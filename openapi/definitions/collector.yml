@@ -49,7 +49,7 @@ paths:
 
 components:
   schemas:
-    raw_query:
+    raw_event:
       $ref: "resources/event.yml"
 
   securitySchemes:

@@ -2,8 +2,18 @@ import logging
 
 from aiokafka import AIOKafkaProducer
 
-from collector.libs import config_loader
+from libs import config_loader
+from libs.logger_colorer import colored_stream
 
+
+config = config_loader.Config()
+logging.basicConfig(
+    level=logging.getLevelName(config.get(config_loader.LOGGING_LEVEL)),
+    format=config.get(config_loader.LOGGING_FORMAT),
+    handlers=[
+        colored_stream,
+    ],
+)
 logger = logging.getLogger(__name__)
 
 

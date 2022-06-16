@@ -2,11 +2,6 @@ LOGGING_LEVEL: "INFO"
 LOGGING_FORMAT: "%(asctime)-15s | %(levelname)s | %(filename)s | %(lineno)d: %(message)s"
 
 KAFKA_BROKER: "localhost:9093"
-RAW_REQUESTS_TOPIC: "raw-request"
+RAW_EVENTS_TOPIC: "raw-events"
 
-API_KEY: "1234"
-
-KEYDB_HOST: "127.0.0.1"
-KEYDB_PORT: 6379
-KEYDB_DB_NUM: 0
-KEYDB_PASS: "1qaz@WSX"
+API_KEY: "1234qwerasdfzxcv"
