@@ -1,11 +1,13 @@
 type: object
 properties:
-  eventId:
-    type: integer
+  source:
+    type: string
+  eventName:
+    type: string
+  eventStatus:
+    type: string
   created:
     type: string
     format: datetime
-  source:
-    type: string
   payout:
     type: string

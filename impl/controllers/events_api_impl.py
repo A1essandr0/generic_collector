@@ -24,14 +24,15 @@ class EventsApi:
         self.config = config
         self.kafka_client = kafka_client
 
-    async def receive_raw_event(self, event_id: int, source: str, created: str, payout: int):
-        logger.info(f"Received event: {event_id=} {source=} {created=} {payout=}")
+    async def receive_raw_event(self, source: str, event_name: str, event_status: str, created: str, payout: int):
         raw_event = RawEvent(
-            event_id=event_id,
             source=source,
+            event_name=event_name,
+            event_status=event_status,
             created=created,
             payout=payout
         )
+        logger.info(f"Received event: {raw_event=}")
 
         await self.send_raw_event_to_kafka(raw_event)
 

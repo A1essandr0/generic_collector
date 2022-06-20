@@ -15,22 +15,30 @@ paths:
       summary: receive_event
       operationId: receiveRawEvent
       parameters:
-        - name: eventId
-          in: query
-          description: eventId
-          required: true
-          schema:
-            type: string
-        - name: created
-          in: query
-          description: Create date in ISO format YYYY-MM-DDTHH:MM:SS+HH:MM
-          required: false
-          schema:
-            type: string
         - name: source
           in: query
           description: source
           required: true
+          schema:
+            type: string
+
+        - name: eventName
+          in: query
+          description: Event name
+          required: false
+          schema:
+            type: string
+        - name: eventStatus
+          in: query
+          description: Event status
+          required: false
+          schema:
+            type: string
+
+        - name: created
+          in: query
+          description: Create date in ISO format YYYY-MM-DDTHH:MM:SS+HH:MM
+          required: false
           schema:
             type: string
         - name: payout
